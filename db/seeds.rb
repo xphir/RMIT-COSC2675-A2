@@ -1,24 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-User.create!(name:  "John Snow",
-  email: "John.Snow@rmit.edu.au",
+#Create admin account
+User.create!(name:  "RMIT Admin",
+  email: "rmit.admin@rmit.edu.au",
   password:              "password",
   password_confirmation: "password",
   admin: true)
 
-99.times do |n|
-firstname = Faker::Name.first_name
-lastname = Faker::Name.last_name
-email = firstname + "." + lastname + "@rmit.edu.au"
-password = "password"
-User.create!(name:  firstname + " " + lastname,
-    email: email,
-    password:              password,
-    password_confirmation: password)
+# Build User data
+userData = [
+  ['Eddard Stark', 'Eddard.Stark@rmit.edu.au', 'RADrmit123'],
+  ['Robert Baratheon', 'Robert.Baratheon@rmit.edu.au', 'RADrmit123'],
+  ['Jaime Lannister', 'Jaime.Lannister@rmit.edu.au', 'RADrmit123'],
+  ['Catelyn Stark', 'Catelyn.Stark@rmit.edu.au', 'RADrmit123'],
+  ['Jon Snow', 'Jon.Snow@rmit.edu.au', 'RADrmit123'],
+  ['Robb Stark', 'Robb.Stark@rmit.edu.au', 'RADrmit123'],
+  ['Khal Drogo', 'Khal.Drogo@rmit.edu.au', 'RADrmit123'],
+  ['Samwell Tarly', 'Samwell.Tarly@rmit.edu.au', 'RADrmit123'],
+  ['Margaery Tyrell', 'Margaery.Tyrell@rmit.edu.au', 'RADrmit123'],
+  ['Roose Bolton', 'Roose.Bolton@rmit.edu.au', 'RADrmit123'],
+]
+
+# Create user data
+userData.each do |name, email, password|
+  User.create(name: name, email: email, password: password, password_confirmation: password)
 end
