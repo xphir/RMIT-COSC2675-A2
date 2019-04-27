@@ -1,7 +1,28 @@
 <% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<div class="center jumbotron">
+  <h1 class="text-center">Welcome to Your Course App</h1>
+  <p class="text-center">This is the home page for the RAD Assignment 2</p>  
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <div class="well block margin-bottom-three">
+      <h3 class="text-center margin-top-none">Register for an account</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <%= link_to 'Sign up now', signup_path, class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="well block margin-bottom-three">
+      <h3 class="text-center margin-top-none">Sign in to your account</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <%= link_to 'Log in to your account', '#', class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="well block margin-bottom-three">
+      <h3 class="text-center margin-top-none">View Course as Guest User</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <%= link_to 'Browse all courses', '#', class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+</div>
