@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   # Populate all the data
-  #before_action :populate
+  before_action :populate
 
   # Adds all the data in so it is accesible for menus, and the selected items on a given page.
   def populate
@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
     #@user = User.new
 
     # Location
-    #@locations = Location.all.order(:name)
-    #@location = Location.new
+    @locations = Location.all.order(:name)
+    @location = Location.new
 
     # Cateogry
-    #@categories = Category.all.order(:name)
-    #@category = Category.new
+    @categories = Category.all.order(:name)
+    @category = Category.new
 
     # Course
     #@courses = Course.all.order(:name)

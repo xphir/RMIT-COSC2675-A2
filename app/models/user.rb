@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   # Association Macros
+  has_many :upvotes
+  has_many :courses, through: :upvotes
+
+  has_many :downvotes
+  has_many :courses, through: :downvotes
+
+  has_many :courses
 
   # Name
   # Name is to short (minimum is 4 characters)
@@ -9,8 +16,8 @@ class User < ApplicationRecord
   length: { 
     minimum: 4,
     maximum: 50,
-    too_short: 'Name is to short (minimum is %{count} characters)',
-    too_long: 'Name is to Long (maximum is %{count} characters)'
+    too_short: 'is to short (minimum is %{count} characters)',
+    too_long: 'is to Long (maximum is %{count} characters)'
   }
   
   # Email
@@ -20,12 +27,12 @@ class User < ApplicationRecord
   length: { 
     minimum: 4,
     maximum: 255,
-    too_short: 'Email is to short (minimum is %{count} characters)',
-    too_long: 'Email is to long (maximum is %{count} characters)'
+    too_short: 'is to short (minimum is %{count} characters)',
+    too_long: 'is to long (maximum is %{count} characters)'
   },
   format: { 
     with: VALID_EMAIL_REGEX,
-    message: 'Email registration only open for RMIT staff (format <first name>.<last name>@rmit.edu.au).'
+    message: 'registration only open for RMIT staff (format <first name>.<last name>@rmit.edu.au).'
   },
   uniqueness: { case_sensitive: false }
   
@@ -37,12 +44,12 @@ class User < ApplicationRecord
   length: { 
     minimum: 8,
     maximum: 50,
-    too_short: 'Password is to short (minimum is %{count} characters)',
-    too_long: 'Password is to long (maximum is %{count} characters)'
+    too_short: 'is to short (minimum is %{count} characters)',
+    too_long: 'is to long (maximum is %{count} characters)'
   },
   format: {
     with: VALID_PASSWORD_REGEX,
-    message: 'Password must contain at least a lowercase letter, an uppercase, a digit, a special character'
+    message: 'must contain at least a lowercase letter, an uppercase, a digit, a special character'
   },
   allow_nil: true
 
