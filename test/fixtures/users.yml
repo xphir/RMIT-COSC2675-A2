@@ -18,3 +18,14 @@ malory:
   name: Malory Archer
   email: malory.archer@rmit.edu.au
   password_digest: <%= User.digest('password') %>
+
+example_user:
+  name: Example User
+  email: example.user@rmit.edu.au
+  password_digest: <%= User.digest('password') %>
+
+example_admin:
+  name: Example Admin
+  email: example.admin@rmit.edu.au
+  password_digest: <%= User.digest('password') %>
+  admin: true

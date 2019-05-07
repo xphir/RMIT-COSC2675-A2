@@ -13,10 +13,10 @@
         <a href="/categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <% @categories.each do |category| %>
-            <li><%= link_to category.name, "category" %></li>
+            <li><%= link_to category.name, category %></li>
           <% end %>
           <li role="separator" class="divider"></li>
-          <li><%= link_to 'All Categories', "categories_path" %></li>
+          <li><%= link_to 'All Categories', categories_path %></li>
         </ul>
       </li>
       <!--Categories Dropdown END-->
@@ -25,15 +25,15 @@
         <a href="/locations" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <% @locations.each do |location| %>
-            <li><%= link_to location.name, "location" %></li>
+            <li><%= link_to location.name, location %></li>
           <% end %>
           <li role="separator" class="divider"></li>
-          <li><%= link_to 'All Locations', "locations_path" %></li>
+          <li><%= link_to 'All Locations', locations_path %></li>
         </ul>
       </li>
       <!--Locations Dropdown END-->
       <!--Courses Dropdown START-->
-      <li><%= link_to "Courses",   "courses_path", class: 'nav-item' %></li>
+      <li><%= link_to "Courses",   courses_path, class: 'nav-item' %></li>
       <!--Courses Dropdown END-->
     </ul>
     <!--Left Navbar END-->

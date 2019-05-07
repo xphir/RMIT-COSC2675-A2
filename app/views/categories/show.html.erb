@@ -1,0 +1,10 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+      <h1>
+        <%= link_to @category.name, category_path(@category) %>
+      </h1>
+      <h3>
+        <%= link_to 'Edit', edit_category_path(@category) %> |
+        <%= link_to 'Back', categories_path %>
+      </h3>
+</div>

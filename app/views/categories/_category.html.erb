@@ -1,0 +1,22 @@
+<% course = category.courses.order(:updated_at).last %>
+<tr>
+  <td><%= link_to category.name, category %></td>
+  <td class="text-center" ><%= category.courses.count %></td>
+  <td>
+    <% if (course.present?) %>
+      <%= link_to course.name, course_path(course.id)%>
+    <% else %>
+      None
+    <% end %>
+  </td>
+  <td><%= course.created_at.strftime("%d/%m/%Y") %></td>
+  <td><%= "#{elapsed_time(course.updated_at)} ago" %></td>
+  <td class="text-right">
+    <%= link_to edit_category_path(category), title: "Edit #{category.name}", class: 'btn' do %>
+      <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+    <% end %>
+    <%= link_to category_path(category), title: "Delete #{category.name}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+      <span class="fa fa-trash-o" aria-hidden="true"></span>
+    <% end %>
+  </td>
+</tr>
