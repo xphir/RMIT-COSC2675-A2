@@ -3,30 +3,48 @@ class User < ApplicationRecord
   # Association Macros
 
   # Name
+  # Name is to short (minimum is 4 characters)
   validates :name, 
   presence: true, 
   length: { 
+    minimum: 4,
     maximum: 50,
-    message: 'Name is to long, our system only accepts names under 50 characters'
+    too_short: 'Name is to short (minimum is %{count} characters)',
+    too_long: 'Name is to Long (maximum is %{count} characters)'
   }
   
   # Email
   VALID_EMAIL_REGEX = /\A[\w]+\.[\w]+@rmit.edu.au\z/i
   validates :email, 
-  presence: true, 
+  presence: true,
   length: { 
+    minimum: 4,
     maximum: 255,
-    message: 'Email is to long, our system only accepts emails under 255 characters'
+    too_short: 'Email is to short (minimum is %{count} characters)',
+    too_long: 'Email is to long (maximum is %{count} characters)'
   },
   format: { 
     with: VALID_EMAIL_REGEX,
-    message: 'RMIT staff only, your email must contain your first and last name (first.last@rmit.edu.au)'
+    message: 'Email registration only open for RMIT staff (format <first name>.<last name>@rmit.edu.au).'
   },
   uniqueness: { case_sensitive: false }
   
   
   # Password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  VALID_PASSWORD_REGEX = /\A^(?=.*[A-Z])(?=.*[\d])(?=.*[a-z])(?=.*[\W])[\S]*/
+  validates :password,
+  presence: true, 
+  length: { 
+    minimum: 8,
+    maximum: 50,
+    too_short: 'Password is to short (minimum is %{count} characters)',
+    too_long: 'Password is to long (maximum is %{count} characters)'
+  },
+  format: {
+    with: VALID_PASSWORD_REGEX,
+    message: 'Password must contain at least a lowercase letter, an uppercase, a digit, a special character'
+  },
+  allow_nil: true
 
   # Make emails all lowercase before adding to db
   before_save { self.email = email.downcase }

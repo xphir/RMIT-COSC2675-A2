@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190427062907) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["id"], name: "index_users_on_id", unique: true
   end
 
 end
