@@ -1,4 +1,75 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <!--Course Name-->
+  <h1 class="text-center page_header"><%= link_to @course.name, course_path(:id => @course.id)%></h1>
+  <div class="row clearfix well">
+    <div class="float_left padding_right">
+      <%= gravatar_for @course.user, size: 220 %>
+      <!--Course Coordinator-->
+      <p class="text-center"><strong>Coordinator:</strong>
+      <% if @course.user.present? %>
+        <%= link_to @course.user.name, user_path(@course.user.id) %>
+      <% else %>
+        No Coordinator
+      <% end %>
+      </p>
+    </div>
+    <div class="">
+      <!--Edit Course-->
+      <div class="pull-right">
+        <% if current_user == @course.user %>
+          <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %> 
+        <% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+        <% if current_user.admin? %>
+          <%= link_to '', edit_course_path(@course), class: 'fa fa-trash-o fa-3x' %>
+        <% end %>
+      </div>
+        
+
+      <!--Prerequisites-->
+      <p><strong>Prerequisites:</strong>
+      <% if @course.prerequisites.present? %>
+        <%= @course.prerequisites.collect { |c| c.name }.join(", ").html_safe %>  
+      <% else %>
+        No Prerequisites
+      <% end %>
+      </p>
+      <!--Locations-->
+      <% if @course.locations.present? %>
+        <p><strong>Locations:</strong>
+          <%= @course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
+        </p>
+      <% else %>
+        <p><strong>Locations:</strong><br>
+        No Locations</p>
+      <% end %>
+      <!--Categories-->
+      <% if @course.categories.present? %>
+        <p><strong>Categories:</strong>
+          <%= @course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
+        </p>
+      <% else %>
+        <p><strong>Categories:</strong> No Categories</p>
+      <% end %>
+      <!--Description-->
+      <p><strong>Description:</strong>
+      <% if @course.description.present? %>
+        <%= @course.description %>
+      <% else %>
+        No Description
+      <% end %>
+      </p>
+      <!--Created-->
+      <p><strong>Created:</strong> <%= elapsed_time(@course.created_at) %> ago
+      <!--Updated-->
+      <strong>Updated:</strong> <%= elapsed_time(@course.updated_at) %> ago</p>
+      <div class="pull-right">
+          <a href="" class="btn"><span class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></span> 0</a> 
+          <a href="" class="btn"><span class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></span>  0</a>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Return to Courses List', courses_path, class: 'btn btn-primary btn-block'  %>
+</div>
+
+

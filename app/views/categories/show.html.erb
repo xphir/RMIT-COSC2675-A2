@@ -1,10 +1,7 @@
 <% provide(:title, @category.name) %>
-<div class="row">
-      <h1>
-        <%= link_to @category.name, category_path(@category) %>
-      </h1>
-      <h3>
-        <%= link_to 'Edit', edit_category_path(@category) %> |
-        <%= link_to 'Back', categories_path %>
-      </h3>
-</div>
+<% if (@courses.present?) %>
+  <h1 class="text-center page_header"><%= @category.name %></h1>
+  <%= render 'shared/courses', courses: @courses %>
+<% else %>
+  <%= render 'shared/error_page', heading: 'Courses Not Found', message: "Cannot find any courses in #{@category.name}. Please create one by logging in as a user." %>
+<% end %>

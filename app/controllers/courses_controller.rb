@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  # Checking Permissions
+  before_action :logged_users_only, only: [:create, :new]
+  before_action :admin_only, only: [:destroy]
 
   # GET /courses
   # GET /courses.json
@@ -10,6 +12,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    set_course
   end
 
   # GET /courses/new
@@ -19,6 +22,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    set_course
   end
 
   # POST /courses
@@ -26,9 +30,12 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
 
+    # Assign course to user
+    @course[:user_id] = current_user.id
+
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to @course, flash: {success: "Successfully created #{@course.name} course!" }}
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -40,9 +47,11 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    set_course
+
     respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+      if @course.update_attributes(course_params)
+        format.html { redirect_to @course, flash: {success: "Successfully updated #{@course.name} course!" }}
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -54,9 +63,9 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
+    set_course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, flash: {success: "Successfully deleted #{@course.name} course!" }}
       format.json { head :no_content }
     end
   end
@@ -69,6 +78,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.fetch(:course, {})
+      params.require(:course).permit([:name, :description, :image, :prerequisites => [], :location_ids => [], :category_ids => []])
     end
 end

@@ -35,6 +35,11 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # Returns true if the user is an admin, false otherwise.
+  def is_admin?
+    current_user.admin?
+  end
+
   # Logs out the current user.
   def log_out
     session.delete(:user_id)
@@ -64,5 +69,38 @@ module SessionsHelper
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  
+  # Redirect to login if not logged in
+  def logged_users_only
+    if !logged_in?
+      flash[:danger] = "Error: You must be logged in to do that action. Redirecting to login page." if !logged_in?
+      redirect_to @category
+    end
+  end
+
+  # Redirect to root if logged in
+  def guests_only
+    if logged_in?
+      flash[:danger] = "Error: You must be a guest to do that action. Redirecting to hompage."
+      redirect_to @category
+    end
+  end
+
+  # Redirect if not admin
+  def admin_only
+    if !is_admin?
+      flash[:danger] = "Error: You must be an admin to do that action. Redirecting to hompage."
+      redirect_to @category
+    end
+  end
+
+  # Redirect if not admin
+  def not_admin
+    if is_admin?
+      flash[:danger] = "Error: You must not be an admin to do that action. Redirecting to hompage."
+      redirect_to @category
+    end
   end
 end

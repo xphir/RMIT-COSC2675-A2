@@ -62,6 +62,7 @@ courseSeven.categories << categoryTwo
 courseEight.categories << categoryFour
 courseNine.categories << categoryTwo
 courseTen.categories << categoryTwo
+courseTen.categories << categoryThree
 courseEleven.categories << categoryThree
 courseTwelve.categories << categoryThree
 courseThirteen.categories << categoryFour
@@ -77,6 +78,7 @@ locationThree = Location.create(name: '14.10.30')
 locationFour = Location.create(name: '14.10.30')
 
 # Assign Courses to Locations
+courseOne.locations << locationOne
 courseTwo.locations << locationOne
 courseThree.locations << locationThree
 courseFour.locations << locationOne

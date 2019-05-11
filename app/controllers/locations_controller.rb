@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  # Checking Permissions
+  before_action :logged_users_only, only: [:create, :new]
+  before_action :admin_only, only: [:destroy]
 
   # GET /locations
   # GET /locations.json
@@ -10,6 +12,8 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    set_location
+    @courses = @location.courses
   end
 
   # GET /locations/new
@@ -19,6 +23,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+    set_location
   end
 
   # POST /locations
@@ -28,7 +33,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to @location, flash: {success: "Successfully created #{@location.name} location!" }}
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
@@ -40,9 +45,11 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    set_location
+
     respond_to do |format|
-      if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+      if @location.update_attributes(location_params)
+        format.html { redirect_to @location, flash: {success: "Successfully updated #{@location.name} location!" }}
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }
@@ -54,9 +61,9 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
-    @location.destroy
+    set_location.destroy
     respond_to do |format|
-      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
+      format.html { redirect_to locations_url, flash: {success: "Successfully deleted #{@location.name} location!" }}
       format.json { head :no_content }
     end
   end
@@ -69,6 +76,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.fetch(:location, {})
+      params.require(:location).permit([:name])
     end
 end

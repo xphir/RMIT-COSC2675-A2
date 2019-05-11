@@ -1,6 +1,4 @@
 <% provide(:title, 'Edit Category') %>
-<% provide(:button_text, 'Edit category') %>
-<h1>Edit Category</h1>
-
-<%= render 'form', category: @category %>
-<%= link_to 'Back', categories_path %>
+<h1>Edit <%= @category.name %> category</h1>
+<p class="lead">Enter a name for a category.</p>
+<%= render 'form', category: @category, url: category_path(@category), method: :put %>

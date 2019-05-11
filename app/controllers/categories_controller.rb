@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-  
+  # Checking Permissions
+  before_action :logged_users_only, only: [:create, :new]
+  before_action :admin_only, only: [:destroy]
+
   # GET /categories
   # GET /categories.json
   def index
@@ -10,6 +12,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    set_category
+    @courses = @category.courses
   end
 
   # GET /categories/new
@@ -19,6 +23,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    set_category
   end
 
   # POST /categories
@@ -28,7 +33,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to @category, flash: {success: "Successfully created #{@category.name} category!" }}
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -40,9 +45,11 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    set_category
+
     respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+      if @category.update_attributes(category_params)
+        format.html { redirect_to @category, flash: {success: "Successfully updated #{@category.name} category!" }}
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -54,9 +61,9 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category.destroy
+    set_category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to categories_url, flash: {success: "Successfully deleted #{@category.name} category!" }}
       format.json { head :no_content }
     end
   end
@@ -69,6 +76,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.fetch(:category, {})
+      params.require(:category).permit([:name])
     end
 end

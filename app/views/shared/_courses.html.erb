@@ -1,0 +1,54 @@
+<% courses.each do |course| %>
+  <div class="container">
+    <div class="row clearfix well">
+      <div class="float_left padding_right">
+        <%= gravatar_for course.user, size: 220 %>
+        <!--Course Coordinator-->
+        <p class="text-center"><strong>Coordinator:</strong>
+        <% if course.user.present? %>
+          <%= link_to course.user.name, user_path(course.user.id) %>
+        <% else %>
+          No Coordinator
+        <% end %>
+        </p>
+      </div>
+      <div class="">
+        <!--Course Name-->
+        <h3><%= link_to course.name, course_path(:id => course.id)%></h3>
+        <!--Prerequisites-->
+        <p><strong>Prerequisites:</strong>
+        <% if course.prerequisites.present? %>
+          <%= course.prerequisites.collect { |c| c.name }.join(", ").html_safe %>  
+        <% else %>
+          No Prerequisites
+        <% end %>
+        </p>
+        <!--Locations-->
+        <% if course.locations.present? %>
+          <p><strong>Locations:</strong>
+            <%= course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
+          </p>
+        <% else %>
+          <p><strong>Locations:</strong><br>
+          No Locations</p>
+        <% end %>
+        <!--Categories-->
+        <% if course.categories.present? %>
+          <p><strong>Categories:</strong>
+            <%= course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
+          </p>
+        <% else %>
+          <p><strong>Categories:</strong> No Categories</p>
+        <% end %>
+        <!--Created-->
+        <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
+        <!--Updated-->
+        <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
+        <div class="pull-right">
+            <a href="" class="btn"><span class="fa fa-thumbs-o-up" aria-hidden="true"></span> 0</a> 
+            <a href="" class="btn"><span class="fa fa-thumbs-o-down" aria-hidden="true"></span>  0</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

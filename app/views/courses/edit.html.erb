@@ -1,6 +1,4 @@
-<h1>Editing Course</h1>
-
-<%= render 'form', course: @course %>
-
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<% provide(:title, 'Edit Course') %>
+<h1>Edit <%= @course.name %> course</h1>
+<p class="lead">Enter a name for a course.</p>
+<%= render 'form', course: @course, url: course_path(@course), method: :put %>

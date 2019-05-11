@@ -1,6 +1,4 @@
-<% provide(:title, 'Create Category') %>
-<% provide(:button_text, 'Create category') %>
-<h1>New Category</h1>
-
-<%= render 'form', category: @category %>
-<%= link_to 'Back', categories_path %>
+<% provide(:title, 'New Category') %>
+<h1>Create a new category</h1>
+<h4>Enter the name for a new category</h4>
+<%= render 'form', category: @category, url: categories_path, method: :post %>

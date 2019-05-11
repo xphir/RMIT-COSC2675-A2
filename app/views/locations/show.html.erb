@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<% provide(:title, @location.name) %>
+<% if (@courses.present?) %>
+  <h1 class="text-center page_header"><%= @location.name %></h1>
+  <%= render 'shared/courses', courses: @courses %>
+<% else %>
+  <%= render 'shared/error_page', heading: 'Locations Not Found', message: "Cannot find any courses in #{@location.name}. Please create one by logging in as a user." %>
+<% end %>

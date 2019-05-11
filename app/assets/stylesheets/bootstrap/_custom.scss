@@ -81,3 +81,32 @@ footer small {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+
+/* Pages Header */
+
+.page_header{
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+/* Align */
+
+
+.clearfix {
+  overflow: auto;
+}
+
+.float_right {
+  float: right;
+}
+
+.float_left {
+  float: left;
+}
+
+.padding_right {
+  padding-right: 50px;
+
+}
