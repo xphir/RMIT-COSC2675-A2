@@ -1,4 +1,4 @@
 <% provide(:title, 'Edit Location') %>
 <h1>Edit <%= @location.name %> location</h1>
 <p class="lead">Enter a name for a location.</p>
-<%= render 'categories/form', category: @location, url: location_path(@location), method: :put %>
+<%= render 'form', location: @location, url: location_path(@location), method: :put %>
