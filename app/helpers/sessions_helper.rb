@@ -37,7 +37,9 @@ module SessionsHelper
 
   # Returns true if the user is an admin, false otherwise.
   def is_admin?
-    current_user.admin?
+    if logged_in?
+      current_user.admin?
+    end
   end
 
   # Logs out the current user.
@@ -76,7 +78,7 @@ module SessionsHelper
   def logged_users_only
     if !logged_in?
       flash[:danger] = "Error: You must be logged in to do that action. Redirecting to login page." if !logged_in?
-      redirect_to @category
+      redirect_to login_path
     end
   end
 
@@ -84,7 +86,7 @@ module SessionsHelper
   def guests_only
     if logged_in?
       flash[:danger] = "Error: You must be a guest to do that action. Redirecting to hompage."
-      redirect_to @category
+      redirect_to root_path
     end
   end
 
@@ -92,7 +94,7 @@ module SessionsHelper
   def admin_only
     if !is_admin?
       flash[:danger] = "Error: You must be an admin to do that action. Redirecting to hompage."
-      redirect_to @category
+      redirect_to root_path
     end
   end
 
@@ -100,7 +102,7 @@ module SessionsHelper
   def not_admin
     if is_admin?
       flash[:danger] = "Error: You must not be an admin to do that action. Redirecting to hompage."
-      redirect_to @category
+      redirect_to root_path
     end
   end
 end

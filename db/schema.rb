@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507102136) do
+ActiveRecord::Schema.define(version: 20190518050143) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20190507102136) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prerequisite"
     t.index ["id"], name: "index_courses_on_id", unique: true
     t.index ["name"], name: "index_courses_on_name", unique: true
   end
@@ -42,13 +43,6 @@ ActiveRecord::Schema.define(version: 20190507102136) do
     t.integer "location_id", null: false
     t.index ["course_id"], name: "index_courses_locations_on_course_id"
     t.index ["location_id"], name: "index_courses_locations_on_location_id"
-  end
-
-  create_table "courses_prerequisites", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "prerequisite_id", null: false
-    t.index ["course_id"], name: "index_courses_prerequisites_on_course_id"
-    t.index ["prerequisite_id"], name: "index_courses_prerequisites_on_prerequisite_id"
   end
 
   create_table "downvotes", force: :cascade do |t|
@@ -64,11 +58,6 @@ ActiveRecord::Schema.define(version: 20190507102136) do
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_locations_on_id", unique: true
     t.index ["name"], name: "index_locations_on_name", unique: true
-  end
-
-  create_table "prerequisites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "upvotes", force: :cascade do |t|

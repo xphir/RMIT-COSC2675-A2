@@ -6,67 +6,12 @@
 <div class="tab-content">
   <div id="Courses" class="tab-pane fade in active">
     <% courses.each do |course| %>
-      <div class="container">
-        <div class="row clearfix well">
-          <div class="float_left padding_right">
-            <%= gravatar_for course.user, size: 220 %>
-            <!--Course Coordinator-->
-            <p class="text-center"><strong>Coordinator:</strong>
-            <% if course.user.present? %>
-              <%= link_to course.user.name, user_path(course.user.id) %>
-            <% else %>
-              No Coordinator
-            <% end %>
-            </p>
-          </div>
-          <div class="">
-            <!--Course Name-->
-            <h3><%= link_to course.name, course_path(:id => course.id)%></h3>
-            <!--Prerequisites-->
-            <p><strong>Prerequisites:</strong>
-            <% if course.prerequisites.present? %>
-              <%= course.prerequisites.collect { |c| c.name }.join(", ").html_safe %>  
-            <% else %>
-              No Prerequisites
-            <% end %>
-            </p>
-            <!--Locations-->
-            <% if course.locations.present? %>
-              <p><strong>Locations:</strong>
-                <%= course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
-              </p>
-            <% else %>
-              <p><strong>Locations:</strong><br>
-              No Locations</p>
-            <% end %>
-            <!--Categories-->
-            <% if course.categories.present? %>
-              <p><strong>Categories:</strong>
-                <%= course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
-              </p>
-            <% else %>
-              <p><strong>Categories:</strong> No Categories</p>
-            <% end %>
-            <!--Created-->
-            <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
-            <!--Updated-->
-            <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
-            <div class="pull-right">
-              <%= link_to upvote_path(course.id), method: :post, class: 'btn btn-primary', title: "Upvote #{course.name}" do %>
-                <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>  <%= Upvote.where(course_id: course.id).count %>
-              <% end %>
-              <%= link_to downvote_path(course.id), method: :post, class: 'btn', title: "Downvote #{course.name}" do %>
-                <span class="fa fa-thumbs-o-down" aria-hidden="true"></span>  <%= Downvote.where(course_id: course.id).count %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render 'shared/course', course: course %>
     <% end %>
   </div>
   <div id="Coordinators" class="tab-pane fade">
     <% courses.select(:user_id).distinct.each do |course| %>
-        <h1><%= course.user.name %></h1>
+      <%= render 'shared/user', course: course %>
     <% end %>
   </div>
 </div>

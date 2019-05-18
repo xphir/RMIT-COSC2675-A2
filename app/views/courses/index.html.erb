@@ -1,58 +1,7 @@
 <% provide(:title, 'All Courses') %>
-
-<h1 class="text-center page_header">Courses</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= link_to course.name, course_path(:id => course.id)%></td>
-        <!--Prerequisites START-->
-        <% if course.prerequisites.present? %>
-          <% names = [] %>
-          <% course.prerequisites.each do |p| %>
-            <% names << p.name %>
-          <% end %>
-        <td><%= names.join(', ') %></td>
-        <% else %>
-          <td><p>No Prerequisites</p></td>
-        <% end %>
-        <!--Locations START-->
-        <% if course.locations.present? %>
-          <td>
-          <% course.locations.each do |p| %>
-           <%= link_to p.name, location_path(p.id)%>
-          <% end %>
-          </td>
-        <% else %>
-          <td><p>No Locations</p></td>
-        <% end %>
-        <!--Categories START-->
-        <% if course.categories.present? %>
-          <td>
-          <% course.categories.each do |p| %>
-           <%= link_to p.name, category_path(p.id)%>
-          <% end %>
-          </td>
-        <% else %>
-          <td><p>No Categories</p></td>
-        <% end %>
-        <!--CRUD START-->
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
-<%= link_to 'New Course', new_course_path %>
+<% if (@courses.present?) %>
+  <h1 class="text-center page_header">All Courses</h1>
+  <%= render 'shared/courses', courses: @courses %>
+<% else %>
+  <%= render 'shared/error_page', heading: 'Courses Not Found', message: "Cannot find any courses in All Courses. Please create one by logging in as a user." %>
+<% end %>

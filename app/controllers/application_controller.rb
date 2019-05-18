@@ -23,11 +23,8 @@ class ApplicationController < ActionController::Base
     @category = Category.new
 
     # Course
-    #@courses = Course.all.order(:name)
-    #@course = Course.new
-
-    # Prereq
-    #@prerequisites = Prerequisite.all.order(:name)
+    @courses = Course.all.order(:name)
+    @course = Course.new
   end
 end
 

@@ -14,25 +14,19 @@
       </p>
     </div>
     <div class="">
-      <!--Edit Course-->
+      <!--Edit & Delete Course-->
       <div class="pull-right">
         <% if current_user == @course.user %>
           <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %> 
         <% end %>
 
-        <% if current_user.admin? %>
+        <% if (is_admin?) %>
           <%= link_to '', edit_course_path(@course), class: 'fa fa-trash-o fa-3x' %>
         <% end %>
       </div>
-        
-
       <!--Prerequisites-->
-      <p><strong>Prerequisites:</strong>
-      <% if @course.prerequisites.present? %>
-        <%= @course.prerequisites.collect { |c| c.name }.join(", ").html_safe %>  
-      <% else %>
-        No Prerequisites
-      <% end %>
+      <p><strong>Prerequisite:</strong>
+      <%= @course.prerequisite %>
       </p>
       <!--Locations-->
       <% if @course.locations.present? %>

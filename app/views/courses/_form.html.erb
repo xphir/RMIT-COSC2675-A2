@@ -1,38 +1,44 @@
 <div class="form">
-    <%= form_for course, url: url, method: method do |f| %>
-        <%= render 'shared/error_messages', object: course %>
-        <div class="form-group">
-          <!--Name-->
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Course Name' %>
-          
-          <!--Prerequisite-->
-          <!--Description-->
-          <br>
-          <%= f.label :description %>
-          <%= f.text_area  :description, class: 'form-control', placeholder: 'Course Description', rows: 10 %>
-          <!--Category-->
-          <div class="form-group">
-            <%= f.label :categories %>
-            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name  do |b| %>
-              <span>
-                <%= b.check_box %>
-                <%= b.label %>
-              </span>
-            <% end %>
-          </div>
-          <!--Location-->
-          <div class="form-group">
-            <%= f.label :locations %>
-            <%= f.collection_check_boxes :location_ids, Location.all, :id, :name do |b| %>
-              <span>
-                <%= b.check_box %>
-                <%= b.label %>
-              </span>
-            <% end %>
-          </div>
-          <!--File-->
-        </div>
-        <%= f.submit class: 'btn btn-primary btn-block' %>
-    <% end %>
+  <%= form_for course, url: url, method: method do |f| %>
+    <%= render 'shared/error_messages', object: course %>
+      <!--Name-->
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Course Name' %>
+      </div>
+      <!--Prerequisite-->
+      <div class="form-group">
+        <%= f.label :prerequisite %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Course Prerequisite' %>
+      </div>
+      <!--Description-->
+      <br>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area  :description, class: 'form-control', placeholder: 'Course Description', rows: 10 %>
+      </div>
+      <!--Category-->
+      <div class="form-group">
+        <%= f.label :categories %>
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name  do |b| %>
+          <span>
+            <%= b.check_box %>
+            <%= b.label %>
+          </span>
+        <% end %>
+      </div>
+      <!--Location-->
+      <div class="form-group">
+        <%= f.label :locations %>
+        <%= f.collection_check_boxes :location_ids, Location.all, :id, :name do |b| %>
+          <span>
+            <%= b.check_box %>
+            <%= b.label %>
+          </span>
+        <% end %>
+      </div>
+      <!--File-->
+    </div>
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  <% end %>
 </div>

@@ -32,7 +32,7 @@
         <td class="text-center"><%= "#{elapsed_time(c.updated_at)} ago" %></td>
         <% if (logged_in?) %>
           <td class="text-right">
-              <%= link_to edit_category_path(c.id), title: "Edit #{c.name}" do %>
+            <%= link_to edit_category_path(c.id), title: "Edit #{c.name}" do %>
                 <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
             <% end %>
             <% if (current_user.admin?) %>
