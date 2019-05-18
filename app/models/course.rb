@@ -11,6 +11,8 @@ class Course < ApplicationRecord
   has_many :upvotes, dependent: :destroy
   has_many :downvotes, dependent: :destroy
 
+  mount_uploader :image, CourseUploader
+
   # REGEX
   VALID_COURSE_REGEX = /\A[\w\s\d]+\z/i
 
@@ -19,6 +21,7 @@ class Course < ApplicationRecord
   presence: true
   validates :locations,
   presence: true
+  validate  :image_size
 
   # Name Validate
   validates :name,
@@ -49,9 +52,6 @@ class Course < ApplicationRecord
     format: {
       with: VALID_COURSE_REGEX,
       message: 'is invalid, must only contain alpha-numeric characters.'
-    },
-    uniqueness: {
-      case_sensitive: false
     }
   
   # Description Validate
@@ -63,4 +63,13 @@ class Course < ApplicationRecord
       too_short: 'is to short (minimum is %{count} characters)',
       too_long: 'is to long (maximum is %{count} characters)'
     }
+
+  private
+    # Validates the size of an uploaded image.
+    def image_size
+      if image.size > 10.megabytes
+        errors.add(:image, "should be less than 10MB")
+      end
+    end
+
 end

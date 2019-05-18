@@ -4,6 +4,7 @@
   <div class="row clearfix well">
     <div class="float_left padding_right">
       <%= gravatar_for @course.user, size: 220 %>
+      <%= image_tag @course.image.url if @course.image? %>
       <!--Course Coordinator-->
       <p class="text-center"><strong>Coordinator:</strong>
       <% if @course.user.present? %>
