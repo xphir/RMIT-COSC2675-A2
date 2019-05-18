@@ -7,7 +7,7 @@ class CourseUploader < CarrierWave::Uploader::Base
   
   # Choose what kind of storage to use for this uploader:
   if Rails.env.test? || Rails.env.development?
-    storage storage :file
+    storage :file
   end
 
   if Rails.env.production?
