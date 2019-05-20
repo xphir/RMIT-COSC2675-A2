@@ -46,7 +46,7 @@ Password: 1#Password
 
 Normal User:
 ```
-Username: Robert.Baratheon@rmit.edu.au
+Username: Eddard.Stark@rmit.edu.au
 Password: @RADrmit123
 ```
 
