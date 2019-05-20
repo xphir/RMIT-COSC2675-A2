@@ -33,11 +33,11 @@
         <% if (logged_in?) %>
           <td class="text-right">
               <%= link_to edit_location_path(c.id), title: "Edit #{c.name}" do %>
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
             <% end %>
             <% if (current_user.admin?) %>
               <%= link_to location_path(c.id), method: :delete, title: "Delete #{c.name}" do %>
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
               <% end %>
             <% end %>
           </td>
