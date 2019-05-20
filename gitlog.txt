@@ -1,0 +1,173 @@
+commit 7bacf8e1cf4b7837d9e7a9da814b103206257929
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 05:45:18 2019 +0000
+
+    Updated README and related files
+
+commit fab412798c32f019fed40a672f86653fefe933dd
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 05:31:54 2019 +0000
+
+    Added course image placeholder + updated course layout + added thumbs view
+
+commit ba470d3e446f93a889c6268ca15cdc224d3aa535
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 19:23:51 2019 +1000
+
+    Update Procfile
+
+commit 02c5b09a8122a0ac76fc9ae70990e07b741e764b
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 09:15:13 2019 +0000
+
+    should fix the bug
+
+commit 8eae7c02414748d4f4e45b3676a975adaffcb898
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 09:05:06 2019 +0000
+
+    fixing double word in uploader
+
+commit bd851674ae02c9da9e60539387c5de875972eda5
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 09:01:56 2019 +0000
+
+    adding image uploads via aws
+
+commit a3564aa3f46525700ebd77674247a0d4b700585a
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 17:13:46 2019 +1000
+
+    Rename .Procfile to Procfile
+
+commit e09ca3cda77c5be142c72eae89fb8eecbdd910f3
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 07:11:44 2019 +0000
+
+    adding release commands
+
+commit 7272272e04b031afd2896e6e0a7a46941c11009b
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 07:01:14 2019 +0000
+
+    Add image uploads + AWS connectors
+
+commit 6a8618252093cc825e06ab09c36c9a759677fdbe
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 18 06:01:28 2019 +0000
+
+    Fixing up page formatting + adding prereq attribute + fixing user profile page + fixing various bugs
+
+commit 09e6e4e4f15735ea92cd5936c9c2f0baaccb4e0f
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 11 07:47:58 2019 +0000
+
+    Small fixes, adding upvote and downvote functionality
+
+commit 2ab648d016d01694e4344943b834457d4d33898c
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat May 11 06:42:24 2019 +0000
+
+    Reworked Categories, Locations, Courses, Navbar to get basics working
+
+commit 7d4574edeb5c2f0b6ca23b4fbd5741fb06685275
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Tue May 7 14:45:47 2019 +0000
+
+    Update Category Views
+
+commit 9267ba9defa6c80d66809ae0c2705f8f259d6fc0
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Tue May 7 10:58:50 2019 +0000
+
+    Update Model Validations + Update Navbar
+
+commit 926f774ab19ca5438518ce7c254a2d5237bfe1d5
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Tue May 7 10:25:31 2019 +0000
+
+    Added generated Course, Location, Category, Upvote, Downvote and Prerequisite Models
+
+commit 55c58015bcbdb1b78df2094a1ca291f7011d2116
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Tue May 7 09:44:44 2019 +0000
+
+    Added custom error pages
+
+commit 1826b59d6ed8638c47733e1c9a1cea64cac0386f
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Tue May 7 09:35:14 2019 +0000
+
+    Updating user model to S2 changes + Added Contact Page
+
+commit bac8a3e962002b9f42c88e72890baf9e467d3ad9
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 10:24:41 2019 +0000
+
+    Resolving user model bugs
+
+commit dd4ef52a6748c154719135ac5e67ac1d037454f2
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 06:36:34 2019 +0000
+
+    Finish user edit, update, index, and destroy actions
+
+commit 70c9fa606fc1dfb98d7da0ddd44f2706eb83a494
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 05:30:54 2019 +0000
+
+    Implement advanced login
+
+commit e348908fb1b02c9f8eeef81fe33ec8a81199ba8d
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 05:18:30 2019 +0000
+
+    Implement basic login
+
+commit f32a1ca83167cbe768fa8e549eb4d5f0ca54722d
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 04:37:07 2019 +0000
+
+    Use SSL and the Puma webserver in production
+
+commit 3a700023194919153512a4d78bc00270a03f3700
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 04:34:16 2019 +0000
+
+    Finish user signup
+
+commit 9a647be909ad1fc3467cc48882a5766d0a02bfc5
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 04:11:29 2019 +0000
+
+    Make a basic User model (including secure passwords)
+
+commit 69449a6a32b8f1b34048208feebc69ba10c400a8
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 03:26:17 2019 +0000
+
+    Finish layout and routes
+
+commit 66c07aee6c1e66485135a4b148b8efe77aab7195
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 02:53:46 2019 +0000
+
+    Add a full_title helper
+
+commit 300c51a5f9a77b2af838ba81788a3956d3aab40c
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 02:42:13 2019 +0000
+
+    Add clear tests
+
+commit fbe0561b7e3bb9ded49a8ff40a00de7ce6d8547c
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 02:39:48 2019 +0000
+
+    Finish static pages
+
+commit 76e57a3a0b4402a9085e9281d2b3a13f7fede9f1
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sat Apr 27 02:28:01 2019 +0000
+
+    Initialize repository + Add ReadME + Add PDF
