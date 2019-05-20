@@ -36,6 +36,19 @@ Ruby  | 2.6.1
 
 Rails | 5.1.7
 
+## App information
+
+Admin Login:
+```
+Username: rmit.admin@rmit.edu.au
+Password: 1#Password
+```
+
+Normal User:
+```
+Username: Eddard.Stark@rmit.edu.au
+Password: @RADrmit123
+```
 
 ## Getting started
 
