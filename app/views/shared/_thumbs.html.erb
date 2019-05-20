@@ -1,0 +1,6 @@
+<%= link_to upvote_path(course.id), method: :post, class: 'btn', title: "Upvote #{course.name}" do %>
+  <span class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></span>  <%= Upvote.where(course_id: course.id).count %>
+<% end %>
+<%= link_to downvote_path(course.id), method: :post, class: 'btn btn-danger', title: "Downvote #{course.name}" do %>
+  <span class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></span>  <%= Downvote.where(course_id: course.id).count %>
+<% end %>

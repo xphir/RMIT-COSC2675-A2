@@ -3,16 +3,8 @@
   <h1 class="text-center page_header"><%= link_to @course.name, course_path(:id => @course.id)%></h1>
   <div class="row clearfix well">
     <div class="float_left padding_right">
-      <%= gravatar_for @course.user, size: 220 %>
-      <%= image_tag @course.image.url if @course.image? %>
-      <!--Course Coordinator-->
-      <p class="text-center"><strong>Coordinator:</strong>
-      <% if @course.user.present? %>
-        <%= link_to @course.user.name, user_path(@course.user.id) %>
-      <% else %>
-        No Coordinator
-      <% end %>
-      </p>
+      <!--Course Image-->
+      <%= image_tag @course.image, class: 'thumbnail', size: "300x250" %>
     </div>
     <div class="">
       <!--Edit & Delete Course-->
@@ -25,6 +17,14 @@
           <%= link_to '', edit_course_path(@course), class: 'fa fa-trash-o fa-3x' %>
         <% end %>
       </div>
+      <!--Course Coordinator-->
+      <p><strong>Coordinator:</strong>
+      <% if @course.user.present? %>
+        <%= link_to @course.user.name, user_path(@course.user.id) %>
+      <% else %>
+        No Coordinator
+      <% end %>
+      </p>
       <!--Prerequisites-->
       <p><strong>Prerequisite:</strong>
       <%= @course.prerequisite %>
@@ -59,8 +59,7 @@
       <!--Updated-->
       <strong>Updated:</strong> <%= elapsed_time(@course.updated_at) %> ago</p>
       <div class="pull-right">
-          <a href="" class="btn"><span class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></span> 0</a> 
-          <a href="" class="btn"><span class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></span>  0</a>
+        <%= render 'shared/thumbs', course: @course %>
       </div>
     </div>
   </div>
