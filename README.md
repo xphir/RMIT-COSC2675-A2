@@ -22,7 +22,7 @@ Name: Elliot Schot <s3530160@student.rmit.edu.au>
 
 Level Completed: 90+ Level
 
-TimeSheet: [TimeSheets.md](TimeSheets.md)
+TimeSheet: Time Taken 45 Hours [TimeSheets.md](TimeSheets.md)
 
 Heroku Deployment URL: https://rmit-rad-assignment.herokuapp.com/
 
