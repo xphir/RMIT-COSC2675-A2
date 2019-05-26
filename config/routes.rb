@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-
-  get  '/contact',  to: 'static_pages#contact'
   
   get 'contact-us', to: 'messages#new', as: 'new_message'
   post 'contact-us', to: 'messages#create', as: 'create_message'
