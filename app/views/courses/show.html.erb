@@ -1,70 +1,67 @@
-<div class="container">
-  <!--Course Name-->
-  <h1 class="text-center page_header"><%= link_to @course.name, course_path(:id => @course.id)%></h1>
-  <div class="row clearfix well">
-    <div class="float_left padding_right">
-      <!--Course Image-->
-      <%= image_tag @course.image, class: 'thumbnail', size: "300x250" %>
+<!--Course Name-->
+<h1 class="text-center page_header"><%= link_to @course.name, course_path(:id => @course.id)%></h1>
+<div class="clearfix well">
+  <div class="float_left padding_right">
+    <!--Course Image-->
+    <%= image_tag @course.image, class: 'thumbnail', size: "300x250" %>
+  </div>
+  <div class="">
+    <!--Edit & Delete Course-->
+    <div class="pull-right">
+      <% if current_user == @course.user %>
+        <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %>
+      <% end %>
+      <% if (is_admin?) %>
+        <%= link_to course_path(@course), method: :delete, title: "Delete #{@course.name}", data: { confirm: "Are you sure?" } do %>
+          <span class="fa fa-trash-o fa-3x" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
     </div>
-    <div class="">
-      <!--Edit & Delete Course-->
-      <div class="pull-right">
-        <% if current_user == @course.user %>
-          <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %>
-        <% end %>
-        <% if (is_admin?) %>
-          <%= link_to course_path(@course), method: :delete, title: "Delete #{@course.name}", data: { confirm: "Are you sure?" } do %>
-            <span class="fa fa-trash-o fa-3x" aria-hidden="true"></span>
-          <% end %>
-        <% end %>
-      </div>
-      <!--Course Coordinator-->
-      <p><strong>Coordinator:</strong>
-      <% if @course.user.present? %>
-        <%= link_to @course.user.name, user_path(@course.user.id) %>
-      <% else %>
-        No Coordinator
-      <% end %>
+    <!--Course Coordinator-->
+    <p><strong>Coordinator:</strong>
+    <% if @course.user.present? %>
+      <%= link_to @course.user.name, user_path(@course.user.id) %>
+    <% else %>
+      No Coordinator
+    <% end %>
+    </p>
+    <!--Prerequisites-->
+    <p><strong>Prerequisite:</strong>
+    <%= @course.prerequisite %>
+    </p>
+    <!--Locations-->
+    <% if @course.locations.present? %>
+      <p><strong>Locations:</strong>
+        <%= @course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
       </p>
-      <!--Prerequisites-->
-      <p><strong>Prerequisite:</strong>
-      <%= @course.prerequisite %>
+    <% else %>
+      <p><strong>Locations:</strong><br>
+      No Locations</p>
+    <% end %>
+    <!--Categories-->
+    <% if @course.categories.present? %>
+      <p><strong>Categories:</strong>
+        <%= @course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
       </p>
-      <!--Locations-->
-      <% if @course.locations.present? %>
-        <p><strong>Locations:</strong>
-          <%= @course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
-        </p>
-      <% else %>
-        <p><strong>Locations:</strong><br>
-        No Locations</p>
-      <% end %>
-      <!--Categories-->
-      <% if @course.categories.present? %>
-        <p><strong>Categories:</strong>
-          <%= @course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
-        </p>
-      <% else %>
-        <p><strong>Categories:</strong> No Categories</p>
-      <% end %>
-      <!--Description-->
-      <p><strong>Description:</strong>
-      <% if @course.description.present? %>
-        <%= @course.description %>
-      <% else %>
-        No Description
-      <% end %>
-      </p>
-      <!--Created-->
-      <p><strong>Created:</strong> <%= elapsed_time(@course.created_at) %> ago
-      <!--Updated-->
-      <strong>Updated:</strong> <%= elapsed_time(@course.updated_at) %> ago</p>
-      <div class="pull-right">
-        <%= render 'shared/thumbs', course: @course %>
-      </div>
+    <% else %>
+      <p><strong>Categories:</strong> No Categories</p>
+    <% end %>
+    <!--Description-->
+    <p><strong>Description:</strong>
+    <% if @course.description.present? %>
+      <%= @course.description %>
+    <% else %>
+      No Description
+    <% end %>
+    </p>
+    <!--Created-->
+    <p><strong>Created:</strong> <%= elapsed_time(@course.created_at) %> ago
+    <!--Updated-->
+    <strong>Updated:</strong> <%= elapsed_time(@course.updated_at) %> ago</p>
+    <div class="pull-right">
+      <%= render 'shared/thumbs', course: @course %>
     </div>
   </div>
-  <%= link_to 'Return to Courses List', courses_path, class: 'btn btn-primary btn-block'  %>
 </div>
-
+<%= link_to 'Return to Courses List', courses_path, class: 'btn btn-primary btn-block'  %>
 

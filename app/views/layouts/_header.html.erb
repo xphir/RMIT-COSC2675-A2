@@ -1,6 +1,10 @@
 <div class="heading">
   <div class="container">
-    <%= link_to "YourCourseApp", '/', class: "navbar-brand" %>
+    <% if logged_in? %>
+      <%= link_to "YourCourseApp", courses_path, class: "navbar-brand" %>
+    <% else %>
+      <%= link_to "YourCourseApp", root_path, class: "navbar-brand" %>
+    <% end %>
   </div>
 </div>
 <!--WHOLE Navbar START-->
