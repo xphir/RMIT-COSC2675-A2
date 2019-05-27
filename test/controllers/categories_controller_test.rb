@@ -3,52 +3,73 @@ require 'test_helper'
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @category = categories(:one)
+    @user = users(:michael)
+    @other_user = users(:archer)
   end
 
   test "should get index" do
-    skip "TODO"
-    get categories_url
+    get categories_path
     assert_response :success
   end
 
   test "should get new" do
-    skip "TODO"
-    get new_category_url
+    log_in_as(@user)
+    get new_category_path
     assert_response :success
   end
 
-  test "should create category" do
-    skip "need to fix other parts"
-    assert_difference('Category.count') do
-      post categories_url, params: { category: {  } }
-    end
+  test "should not get new" do
+    get new_category_path
+    assert_redirected_to login_path
+  end
 
-    assert_redirected_to category_url(Category.last)
+  test "should create category" do
+    log_in_as(@user)
+    assert_difference('Category.count') do
+      post categories_path, params: { category: { name: 'Test Category' } }
+    end
+    assert_redirected_to category_path(Category.last)
   end
 
   test "should show category" do
-    get category_url(@category)
+    get category_path(@category)
     assert_response :success
   end
 
   test "should get edit" do
-    skip "TODO"
-    get edit_category_url(@category)
+    log_in_as(@user)
+    get edit_category_path(@category)
     assert_response :success
   end
 
+  test "should fail update category" do
+    patch category_path(@category), params: { category: { name: 'Updated Category 01' } }
+    assert_redirected_to login_path
+  end
+
   test "should update category" do
-    skip "TODO"
-    patch category_url(@category), params: { category: {  } }
-    assert_redirected_to category_url(@category)
+    log_in_as(@user)
+    patch category_path(@category), params: { category: { name: 'Updated Category 02' } }
+    assert_redirected_to category_path(@category)
+  end
+
+  test "should fail to destroy category" do
+    log_in_as(@other_user)
+    assert_difference('Category.count', 0) do
+      delete category_url(@category)
+    end
+    assert_redirected_to root_path
   end
 
   test "should destroy category" do
-    skip "TODO"
+    log_in_as(@user)
     assert_difference('Category.count', -1) do
       delete category_url(@category)
     end
 
     assert_redirected_to categories_url
   end
+
+
+
 end

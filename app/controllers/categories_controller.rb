@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   # Checking Permissions
-  before_action :logged_users_only, only: [:create, :new]
+  before_action :logged_users_only, only: [:create, :new, :update]
   before_action :admin_only, only: [:destroy]
 
   # GET /categories
