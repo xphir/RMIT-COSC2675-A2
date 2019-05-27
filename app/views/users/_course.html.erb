@@ -1,24 +1,22 @@
-<div class="container">
-  <div class="row clearfix well">
-    <div class="">
-      <!--Course Name-->
-      <h3><%= link_to course.name, course_path(:id => course.id)%></h3>    
-      <!--Prerequisites-->
-      <p><strong>Prerequisite:</strong>
-      <%= course.prerequisite %>
-      </p>
-      <!--Created-->
-      <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
-      <!--Updated-->
-      <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
-      <div class="pull-right">
-        <%= link_to upvote_path(course.id), method: :post, class: 'btn btn-primary', title: "Upvote #{course.name}" do %>
-          <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>  <%= Upvote.where(course_id: course.id).count %>
-        <% end %>
-        <%= link_to downvote_path(course.id), method: :post, class: 'btn', title: "Downvote #{course.name}" do %>
-          <span class="fa fa-thumbs-o-down" aria-hidden="true"></span>  <%= Downvote.where(course_id: course.id).count %>
-        <% end %>
-      </div>
+<div class="clearfix well">
+  <div class="">
+    <!--Course Name-->
+    <h3><%= link_to course.name, course_path(:id => course.id)%></h3>    
+    <!--Prerequisites-->
+    <p><strong>Prerequisite:</strong>
+    <%= course.prerequisite %>
+    </p>
+    <!--Created-->
+    <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
+    <!--Updated-->
+    <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
+    <div class="pull-right">
+      <%= link_to upvote_path(course.id), method: :post, class: 'btn btn-primary', title: "Upvote #{course.name}" do %>
+        <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>  <%= Upvote.where(course_id: course.id).count %>
+      <% end %>
+      <%= link_to downvote_path(course.id), method: :post, class: 'btn', title: "Downvote #{course.name}" do %>
+        <span class="fa fa-thumbs-o-down" aria-hidden="true"></span>  <%= Downvote.where(course_id: course.id).count %>
+      <% end %>
     </div>
   </div>
 </div>

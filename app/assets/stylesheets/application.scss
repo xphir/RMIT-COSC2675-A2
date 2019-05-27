@@ -10,12 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
+// Base Imports
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "base/helpers";
+@import "font-awesome";
+
+// Bootstrap Imports
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Custom Theme
 @import "bootstrap/custom";
-@import "font-awesome";
+
+//Base CSS THEME Sourced IN Part From https://github.com/johnnyhuy/RMIT-Course-App - Note No Specified LICENCE

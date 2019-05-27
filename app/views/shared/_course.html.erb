@@ -1,48 +1,46 @@
-<div class="container">
-  <div class="row clearfix well">
-    <div class="float_left padding_right">
-    <!--Course Image-->
-      <%= image_tag course.image, class: 'thumbnail', size: "300x250" %>
-    </div>
-    <div class="">
-      <!--Course Name-->
-      <h3><%= link_to course.name, course_path(:id => course.id)%></h3>
-      <!--Course Coordinator-->
-      <p><strong>Coordinator:</strong>
-      <% if course.user.present? %>
-        <%= link_to course.user.name, user_path(course.user.id) %>
-      <% else %>
-        No Coordinator
-      <% end %>
+<div class="clearfix well">
+  <div class="float_left padding_right">
+  <!--Course Image-->
+    <%= image_tag course.image, class: 'thumbnail', size: "300x250" %>
+  </div>
+  <div class="">
+    <!--Course Name-->
+    <h3><%= link_to course.name, course_path(:id => course.id)%></h3>
+    <!--Course Coordinator-->
+    <p><strong>Coordinator:</strong>
+    <% if course.user.present? %>
+      <%= link_to course.user.name, user_path(course.user.id) %>
+    <% else %>
+      No Coordinator
+    <% end %>
+    </p>
+    <!--Prerequisites-->
+    <p><strong>Prerequisite:</strong>
+    <%= course.prerequisite %>
+    </p>
+    <!--Locations-->
+    <% if course.locations.present? %>
+      <p><strong>Locations:</strong>
+        <%= course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
       </p>
-      <!--Prerequisites-->
-      <p><strong>Prerequisite:</strong>
-      <%= course.prerequisite %>
+    <% else %>
+      <p><strong>Locations:</strong><br>
+      No Locations</p>
+    <% end %>
+    <!--Categories-->
+    <% if course.categories.present? %>
+      <p><strong>Categories:</strong>
+        <%= course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
       </p>
-      <!--Locations-->
-      <% if course.locations.present? %>
-        <p><strong>Locations:</strong>
-          <%= course.locations.collect { |c| link_to c.name, location_path(c.id) }.join(", ").html_safe %>
-        </p>
-      <% else %>
-        <p><strong>Locations:</strong><br>
-        No Locations</p>
-      <% end %>
-      <!--Categories-->
-      <% if course.categories.present? %>
-        <p><strong>Categories:</strong>
-          <%= course.categories.collect { |c| link_to c.name, category_path(c.id) }.join(", ").html_safe %>
-        </p>
-      <% else %>
-        <p><strong>Categories:</strong> No Categories</p>
-      <% end %>
-      <!--Created-->
-      <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
-      <!--Updated-->
-      <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
-      <div class="pull-right">
-        <%= render 'shared/thumbs', course: course %>
-      </div>
+    <% else %>
+      <p><strong>Categories:</strong> No Categories</p>
+    <% end %>
+    <!--Created-->
+    <p><strong>Created:</strong> <%= elapsed_time(course.created_at) %> ago
+    <!--Updated-->
+    <strong>Updated:</strong> <%= elapsed_time(course.updated_at) %> ago</p>
+    <div class="pull-right">
+      <%= render 'shared/thumbs', course: course %>
     </div>
   </div>
 </div>

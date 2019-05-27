@@ -1,15 +1,13 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <div>
-    <div class="">
-      <%= gravatar_for @user, class_options: 'img-responsive center-block', size: 150 %>
-    </div>
-    <h1 class="text-center bottom_boarder">
-      Coordinator: 
-      <%= @user.name %>
-    </h1>
-    <% @user.courses.each do |course| %>
-      <%= render 'course', course: course %>
-    <% end %>
+<div>
+  <div class="">
+    <%= gravatar_for @user, class_options: 'img-responsive center-block', size: 150 %>
   </div>
+  <h1 class="text-center bottom_boarder">
+    Coordinator: 
+    <%= @user.name %>
+  </h1>
+  <% @user.courses.each do |course| %>
+    <%= render 'course', course: course %>
+  <% end %>
 </div>
