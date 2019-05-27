@@ -3,19 +3,23 @@
   <h1 class="text-center">Contact Us</h1>
 </div>
 
-<%= form_for @message, url: create_message_url do |f| %>
-  <%= render 'shared/error_messages', object: @message %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @message, url: create_message_url do |f| %>
+      <%= render 'shared/error_messages', object: @message %>
 
-  <div class="form-group">
-    <%= f.text_field :name, placeholder: 'Name', class: "form-control" %>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: 'Name', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: 'Email', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :body, placeholder: 'Message', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Send', class: "btn btn-primary btn-block"  %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.email_field :email, placeholder: 'Email', class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.text_area :body, placeholder: 'Message', class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Send', class: "btn btn-primary btn-block"  %>
-  </div>
-<% end %>
+</div> 
