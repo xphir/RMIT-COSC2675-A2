@@ -66,6 +66,7 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not destroy location" do
+    log_in_as(@other_user)
     assert_difference('Location.count', 0) do
       delete location_path(@location)
     end

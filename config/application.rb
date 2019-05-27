@@ -12,9 +12,12 @@ module CourseApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.exceptions_app = self.routes
-
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Turn off disable submit buttons
+    #config.action_view.automatically_disable_submit_tag = false
   end
 end

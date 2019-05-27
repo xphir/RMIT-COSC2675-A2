@@ -5,6 +5,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     # Create users
     @user = users(:example_user)
     @admin = users(:example_admin)
+    @correct_user = users(:michael)
 
     # Create relations
     @category = categories(:one)
@@ -16,41 +17,77 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    skip "TODO"
-    get courses_url
+    get courses_path
     assert_response :success
   end
 
+  test "should not get new" do
+    get new_course_path
+    assert_redirected_to login_path
+  end
+
   test "should get new" do
-    skip "TODO"
-    get new_course_url
+    log_in_as(@user)
+    get new_course_path
     assert_response :success
   end
 
   test "should create course" do
-    skip "need to fix other parts"
+    log_in_as(@user)
     assert_difference('Course.count') do
-      post courses_url, params: { course: {  } }
+      post courses_path, params: { course: { name: 'Course Test', prerequisite: "Course Zero", user_id: 1, location_ids: [@location.id], category_ids: [@category.id], description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' } }
     end
+    assert_redirected_to course_path(Course.last)
+  end
 
-    assert_redirected_to course_url(Course.last)
+  test "should not create course" do
+    assert_no_difference('Course.count') do
+      post courses_path, params: { course: { name: 'Course Test Fail', prerequisite: "Course Zero", user_id: 1, location_ids: [@location.id], category_ids: [@category.id], description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' } }
+    end
+    assert_redirected_to login_path
   end
 
   test "should show course" do
-    get course_url(@course)
+    get course_path(@course)
     assert_response :success
   end
 
   test "should get edit" do
     skip "TODO"
-    get edit_course_url(@course)
+    log_in_as(@correct_user)
+    get edit_course_path(@course)
     assert_response :success
   end
 
+  test "should not get edit - wrong user" do
+    skip "TODO"
+    log_in_as(@user)
+    get edit_course_path(@course)
+    assert_redirected_to courses_path
+  end
+
+  test "should not get edit" do
+    get edit_course_path(@course)
+    assert_redirected_to login_path
+  end
+
   test "should update course" do
-    skip "need to fix other parts"
-    patch course_url(@course), params: { course: {  } }
-    assert_redirected_to course_url(@course)
+    skip "TODO"
+    log_in_as(@correct_user)
+    patch course_url(@course), params: { course: { prerequisite: "Course 99" } }
+    assert_redirected_to course_path(@course)
+  end
+
+  test "should not update course - wrong user" do
+    skip "TODO"
+    log_in_as(@user)
+    patch course_url(@course), params: { course: { prerequisite: "Course 100" } }
+    assert_redirected_to login_path
+  end
+
+  test "should not update course - no user" do
+    patch course_url(@course), params: { course: { prerequisite: "Course 101" } }
+    assert_redirected_to login_path
   end
 
   test "should destroy course" do

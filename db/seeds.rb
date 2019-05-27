@@ -1,10 +1,12 @@
 # Create admin account
-adminPassword = '1#Password'
-User.create!(name:  "RMIT Admin",
-  email: "rmit.admin@rmit.edu.au",
+adminPassword = 'password'
+adminUser = User.new(name:  "RMIT Admin",
+  email: "admin",
   password:              adminPassword,
   password_confirmation: adminPassword,
   admin: true)
+
+adminUser.save(validate: false)
 
 # Password can't be blank
 # Password must contain at least a lowercase letter, an uppercase, a digit, a special character and 8+ characters

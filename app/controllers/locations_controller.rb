@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   # Checking Permissions
-  before_action :logged_users_only, only: [:create, :new, :update, :edit]
+  before_action :logged_users_only, except: [:index, :show]
   before_action :admin_only, only: [:destroy]
 
   # GET /locations

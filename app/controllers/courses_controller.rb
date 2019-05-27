@@ -2,7 +2,6 @@ class CoursesController < ApplicationController
   # Checking Permissions
   before_action :logged_users_only, except: [:index, :show]
   before_action :admin_only, only: [:destroy]
-
   # GET /courses
   # GET /courses.json
   def index
@@ -23,6 +22,10 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     set_course
+    # Wrong User
+    unless current_user?(User.find(@course.user_id))
+      redirect_to courses_path
+    end
   end
 
   # POST /courses
@@ -48,14 +51,20 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     set_course
-
+    
     respond_to do |format|
-      if @course.update_attributes(course_params)
-        format.html { redirect_to @course, flash: {success: "Successfully updated #{@course.name} course!" }}
-        format.json { render :show, status: :ok, location: @course }
+      # Wrong User
+      unless current_user?(User.find(@course.user_id))
+        format.html { redirect_to courses_path }
+        format.json { render json: 'Current user does not own the course', status: :unprocessable_entity }
       else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        if @course.update_attributes(course_params)
+          format.html { redirect_to @course, flash: {success: "Successfully updated #{@course.name} course!" }}
+          format.json { render :show, status: :ok, location: @course }
+        else
+          format.html { render :edit }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
