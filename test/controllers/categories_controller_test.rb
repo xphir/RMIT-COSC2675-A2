@@ -23,6 +23,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_path
   end
 
+  test "should not create category" do
+    assert_no_difference('Category.count') do
+      post categories_path, params: { category: { name: 'Test Category' } }
+    end
+    assert_redirected_to login_path
+  end
+
   test "should create category" do
     log_in_as(@user)
     assert_difference('Category.count') do
@@ -36,13 +43,18 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not get edit" do
+    get edit_category_path(@category)
+    assert_redirected_to login_path
+  end
+
   test "should get edit" do
     log_in_as(@user)
     get edit_category_path(@category)
     assert_response :success
   end
 
-  test "should fail update category" do
+  test "should not update category" do
     patch category_path(@category), params: { category: { name: 'Updated Category 01' } }
     assert_redirected_to login_path
   end
@@ -53,7 +65,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to category_path(@category)
   end
 
-  test "should fail to destroy category" do
+  test "should not destroy category" do
     log_in_as(@other_user)
     assert_difference('Category.count', 0) do
       delete category_url(@category)
