@@ -14,6 +14,9 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     @course.categories << @category
     @course.locations << @location
+
+    
+
   end
 
   test "should get index" do
@@ -53,14 +56,12 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    skip "TODO"
     log_in_as(@correct_user)
     get edit_course_path(@course)
     assert_response :success
   end
 
   test "should not get edit - wrong user" do
-    skip "TODO"
     log_in_as(@user)
     get edit_course_path(@course)
     assert_redirected_to courses_path
@@ -72,17 +73,16 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update course" do
-    skip "TODO"
     log_in_as(@correct_user)
     patch course_url(@course), params: { course: { prerequisite: "Course 99" } }
-    assert_redirected_to course_path(@course)
+    assert_response :success
+    #assert_redirected_to course_path(@course)
   end
 
   test "should not update course - wrong user" do
-    skip "TODO"
     log_in_as(@user)
     patch course_url(@course), params: { course: { prerequisite: "Course 100" } }
-    assert_redirected_to login_path
+    assert_redirected_to courses_path
   end
 
   test "should not update course - no user" do
@@ -91,11 +91,26 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy course" do
-    skip "TODO"
+    log_in_as(@admin)
     assert_difference('Course.count', -1) do
       delete course_url(@course)
     end
 
     assert_redirected_to courses_url
+  end
+
+  test "should fail destroy course - wrong user" do
+    log_in_as(@user)
+    assert_difference('Course.count', 0) do
+      delete course_url(@course)
+    end
+    assert_redirected_to root_path
+  end
+
+  test "should fail destroy course - no user" do
+    assert_difference('Course.count', 0) do
+      delete course_url(@course)
+    end
+    assert_redirected_to login_path
   end
 end

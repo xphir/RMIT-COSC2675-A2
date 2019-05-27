@@ -3,11 +3,13 @@ michael:
   email: michael.example@rmit.edu.au
   password_digest: <%= User.digest('password') %>
   admin: true
+  id: 1
 
 archer:
   name: Sterling Archer
   email: sterling.archer@rmit.edu.au
   password_digest: <%= User.digest('password') %>
+  id: 2
 
 lana:
   name: Lana Kane

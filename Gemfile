@@ -21,6 +21,9 @@ gem 'mini_magick',             '4.7.0'
 gem "font-awesome-rails",       '4.7.0.5'
 gem 'bcrypt',                  '3.1.12'
 
+# AWS gem
+gem 'aws-sdk-s3'
+
 #GEMS outside scope
 
 group :development, :test do
