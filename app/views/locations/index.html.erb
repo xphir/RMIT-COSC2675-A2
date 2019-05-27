@@ -36,7 +36,7 @@
                 <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
             <% end %>
             <% if (current_user.admin?) %>
-              <%= link_to location_path(c.id), method: :delete, title: "Delete #{c.name}" do %>
+              <%= link_to location_path(c.id), method: :delete, title: "Delete #{c.name}", data: { confirm: "Are you sure?" } do %>
                 <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
               <% end %>
             <% end %>

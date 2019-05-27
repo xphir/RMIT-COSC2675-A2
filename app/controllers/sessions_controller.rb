@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  # Middleware
+  before_action :logged_users_only, only: :destroy
+  before_action :guests_only, only: [:new, :create]
 
   def new
   end

@@ -10,11 +10,12 @@
       <!--Edit & Delete Course-->
       <div class="pull-right">
         <% if current_user == @course.user %>
-          <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %> 
+          <%= link_to '', edit_course_path(@course), class: 'fa fa-pencil-square-o fa-3x' %>
         <% end %>
-
         <% if (is_admin?) %>
-          <%= link_to '', edit_course_path(@course), class: 'fa fa-trash-o fa-3x' %>
+          <%= link_to course_path(@course), method: :delete, title: "Delete #{@course.name}", data: { confirm: "Are you sure?" } do %>
+            <span class="fa fa-trash-o fa-3x" aria-hidden="true"></span>
+          <% end %>
         <% end %>
       </div>
       <!--Course Coordinator-->
