@@ -1,12 +1,21 @@
 # Create admin account
-adminPassword = 'password'
+simplePassword = 'password'
 adminUser = User.new(name:  "RMIT Admin",
   email: "admin",
-  password:              adminPassword,
-  password_confirmation: adminPassword,
+  password:              simplePassword,
+  password_confirmation: simplePassword,
   admin: true)
 
 adminUser.save(validate: false)
+
+# Create user account
+normalUser = User.new(name:  "RMIT Coordinator",
+  email: "coordinator",
+  password:              simplePassword,
+  password_confirmation: simplePassword)
+
+normalUser.save(validate: false)
+
 
 # Password can't be blank
 # Password must contain at least a lowercase letter, an uppercase, a digit, a special character and 8+ characters

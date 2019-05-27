@@ -1,6 +1,46 @@
 <% provide(:title, 'All users') %>
-<h1 class="text-center">All users</h1>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
+<% if (@users.present?) %>
+  <h1 class="text-center page_header">All Coordinators</h1>
+  <h5 class="text-center">List of all coordinators.</h5>
+  <table class="table table-hover block">
+    <thead>
+      <tr>
+        <th><span class="fa fa-user-o fa-lg" aria-hidden="true"></span></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="text-center">Date Added</th>
+        <th class="text-center">Last Updated</th>
+        <% if (logged_in?) %>
+          <th class="text-right"><span class="fa fa-cogs fa-lg" aria-hidden="true"></span></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= gravatar_for user, size: 50 %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= link_to user.email, user_path(user) %></td>
+        <td class="text-center"><%= user.created_at.strftime("%d/%m/%Y") %></td>
+        <td class="text-center"><%= "#{elapsed_time(user.updated_at)} ago" %></td>
+        <% if (current_user?(user)) %>
+          <td class="text-right">
+            <%= link_to edit_user_path(user.id), title: "Edit #{user.name}" do %>
+                <span class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></span>
+            <% end %>
+            <% if (current_user.admin?) %>
+              <%= link_to user_path(user.id), method: :delete, title: "Delete #{user.name}" do %>
+                <span class="fa fa-trash-o fa-lg" aria-hidden="true"></span>
+              <% end %>
+            <% end %>
+          </td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= render 'shared/error_page', heading: 'Locations Not Found', message: 'Cannot find any locations within the application. Please create one by logging in as a user.' %>
+<% end %>
