@@ -38,9 +38,16 @@
        Using activerecord 5.1.7
        Using execjs 2.7.0
        Using autoprefixer-rails 9.5.1.1
+       Using aws-eventstream 1.0.3
+       Using aws-partitions 1.167.0
+       Using aws-sigv4 1.1.0
+       Using jmespath 1.4.0
+       Using aws-sdk-core 3.53.1
+       Using aws-sdk-kms 1.21.0
+       Using aws-sdk-s3 1.40.0
        Using bcrypt 3.1.12
        Using rb-fsevent 0.10.3
-       Using ffi 1.11.0
+       Using ffi 1.11.1
        Using rb-inotify 0.10.0
        Using sass-listen 4.0.0
        Using sass 3.7.4
@@ -88,7 +95,7 @@
        Using netrc 0.11.0
        Using rest-client 2.0.2
        Using rbovirt 0.1.7
-       Using fog-ovirt 1.1.6
+       Using fog-ovirt 1.2.0
        Using fog-powerdns 0.2.0
        Using fog-profitbricks 4.1.1
        Using fog-rackspace 0.1.6
@@ -121,10 +128,10 @@
        Using turbolinks-source 5.2.0
        Using turbolinks 5.0.1
        Using uglifier 3.2.0
-       Bundle complete! 27 Gemfile dependencies, 117 gems now installed.
+       Bundle complete! 28 Gemfile dependencies, 124 gems now installed.
        Gems in the groups development and test were not installed.
        Bundled gems are installed into `./vendor/bundle`
-       Bundle completed (0.53s)
+       Bundle completed (0.54s)
        Cleaning up the bundler cache.
 -----> Installing node-v10.14.1-linux-x64
 -----> Detecting rake tasks
@@ -132,8 +139,7 @@
        Running: rake assets:precompile
        Yarn executable was not detected in the system.
        Download Yarn at https://yarnpkg.com/en/docs/install
-       I, [2019-05-20T05:36:44.335875 #250]  INFO -- : Writing /tmp/build_0c54e55bd4c5bffe5bb37f0c6c6a9b5b/public/assets/fallback/default-085419c32c57565c55c4a6f0a50745517dea50244af74bfd09914a1afd8cb131.png
-       Asset precompilation completed (27.54s)
+       Asset precompilation completed (3.21s)
        Cleaning assets
        Running: rake assets:clean
 -----> Detecting rails configuration
@@ -141,7 +147,7 @@
        Procfile declares types     -> web
        Default types for buildpack -> console, rake
 -----> Compressing...
-       Done: 47.2M
+       Done: 49M
 -----> Launching...
-       Released v31
+       Released v38
        https://rmit-rad-assignment.herokuapp.com/ deployed to Heroku
