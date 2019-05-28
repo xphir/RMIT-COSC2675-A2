@@ -32,5 +32,25 @@ Commit History + Time Estimate
 | Sat May 18 19:23:51 2019 | Update Procfile | 30 |
 | Mon May 20 05:31:54 2019 | Added course image placeholder + updated course layout + added thumbs view | 300 |
 | Mon May 20 05:45:18 2019 | Updated README and related files | 60 |
+| Mon May 20 15:46:23 2019 | Create LICENSE | 5 |
+| Mon May 20 06:11:26 2019 | Add timeSheets | 60 |
+| Mon May 20 16:12:07 2019 | Update README.md | 5 |
+| Mon May 20 06:12:44 2019 | Merge branch 'master' of github.com:rmit-s3530160-elliot-schot/CourseApp | 5 |
+| Mon May 20 16:17:33 2019 | Update README.md | 5 |
+| Mon May 20 16:19:00 2019 | Update README.md | 5 |
+| Mon May 20 07:07:27 2019 | fix font awesome icon | 30 |
+| Mon May 20 07:07:43 2019 | Merge branch 'master' of github.com:rmit-s3530160-elliot-schot/CourseApp | 0 |
+| Sun May 26 13:56:13 2019 | Adding Contact Us Testing | 60 |
+| Sun May 26 14:10:42 2019 | Replace Contact Us Page | 60 |
+| Sun May 26 14:11:47 2019 | Remove old contact page | 10 |
+| Mon May 27 02:14:16 2019 | fix footer and update contact page layout | 15 |
+| Mon May 27 02:31:31 2019 | adding category tests | 15 |
+| Mon May 27 04:29:05 2019 | add location controller tests | 60 |
+| Mon May 27 06:07:25 2019 | adding course testing + added admin login | 60 |
+| Mon May 27 06:49:24 2019 | finished course controller tests | 60 |
+| Mon May 27 18:11:41 2019 | Styling Overhaul + Small Formatting Changes | 120 |
+| Mon May 27 18:44:51 2019 | Added Users Index View + Small Formatting changes + New user Seed data | 30 |
+| Mon May 27 19:36:38 2019 | Added proper user controller validation + other small parts | 60 |
+| Mon May 27 22:02:21 2019 | small formatting changes + change YourCourseApp Link when logged in | 15 |
 
-Total Time 2650 Miniutes (44 Hours or 5.5 Full 8 hour days)
+Total Time 3330 Miniutes (55 Hours or 7 Full 8 hour days)

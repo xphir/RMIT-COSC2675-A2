@@ -1,3 +1,125 @@
+commit 7afd427562d87fe8bb02353b2fa0e0a88c820d4e
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 22:02:21 2019 +0000
+
+    small formatting changes + change YourCourseApp Link when logged in
+
+commit 5c6902c3086fb912c723b4a8c2761e1c45a9dcca
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 19:36:38 2019 +0000
+
+    Added proper user controller validation + other small parts
+
+commit c37e1658e10b353588b72c6b32e09ac6544ac646
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 18:44:51 2019 +0000
+
+    Added Users Index View + Small Formatting changes + New user Seed data
+
+commit dcf5b75f9ff22f538fdc041f6ce3f9e475947747
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 18:11:41 2019 +0000
+
+    Styling Overhaul + Small Formatting Changes
+
+commit 76b36cc79cc0d8684ced0f9cc728694c65a7b33d
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 06:49:24 2019 +0000
+
+    finished course controller tests
+
+commit 48055e345d9dd7faa59cc9efb66b92a3d2b83d48
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 06:07:25 2019 +0000
+
+    adding course testing + added admin login
+
+commit aa570d8c197d8d652832e800fe65fe3b8a4a77b6
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 04:29:05 2019 +0000
+
+    add location controller tests
+
+commit 5ecff083a6feab664516db06b425b7e21104971f
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 02:31:31 2019 +0000
+
+    adding category tests
+
+commit 3d87a6bee4a6f9d1fa78f989fbb5f835efd54466
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 27 02:14:16 2019 +0000
+
+    fix footer and update contact page layout
+
+commit bff53effb44359b96c990ace8f195e96faee14de
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sun May 26 14:11:47 2019 +0000
+
+    Remove old contact page
+
+commit ced5aadd8f88c400e6b86b398f9cb8b15f9c2968
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sun May 26 14:10:42 2019 +0000
+
+    Replace Contact Us Page
+
+commit 80fb3326317979489e247058c99a88b6e08b30f3
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Sun May 26 13:56:13 2019 +0000
+
+    Adding Contact Us Testing
+
+commit bff2ab34d48ff6864363e80c450d9a3f1fb4b8cd
+Merge: 9748001 4fa411b
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 07:07:43 2019 +0000
+
+    Merge branch 'master' of github.com:rmit-s3530160-elliot-schot/CourseApp
+
+commit 97480014e8be5168584d7a2c16c646057474a631
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 07:07:27 2019 +0000
+
+    fix font awesome icon
+
+commit 4fa411b8bfc046d6d6b7cb27382cdb4a619b2340
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 16:19:00 2019 +1000
+
+    Update README.md
+
+commit 2c7afa9b000b83ac99617ef2bc186bf27b0fa3a6
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 16:17:33 2019 +1000
+
+    Update README.md
+
+commit e5e7e897798c54c75f20864ad5c3c0686f990bdb
+Merge: 9dfcb97 582202c
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 06:12:44 2019 +0000
+
+    Merge branch 'master' of github.com:rmit-s3530160-elliot-schot/CourseApp
+
+commit 582202c121686545ddfe88afab5327869287ca57
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 16:12:07 2019 +1000
+
+    Update README.md
+
+commit 9dfcb97f2dfc11fdd95cf2f83929e976fcc00fa1
+Author: Elliot Schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 06:11:26 2019 +0000
+
+    Add timeSheets
+
+commit 4a85ed080019717f176ae19f7a89b782678850bc
+Author: rmit-s3530160-elliot-schot <s3530160@student.rmit.edu.au>
+Date:   Mon May 20 15:46:23 2019 +1000
+
+    Create LICENSE
+
 commit 7bacf8e1cf4b7837d9e7a9da814b103206257929
 Author: Elliot Schot <s3530160@student.rmit.edu.au>
 Date:   Mon May 20 05:45:18 2019 +0000
